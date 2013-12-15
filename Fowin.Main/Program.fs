@@ -6,8 +6,11 @@ let setup (app:Owin.IAppBuilder) =
 
 [<EntryPoint>]
 let main args =
-  let uri = "http://localhost:9678/"
+  let uri =
+    match List.ofArray args with
+    | [] -> "http://localhost:9678/"
+    | uri::_ -> uri
   use a = Microsoft.Owin.Hosting.WebApp.Start(uri, setup)
-  printfn "Started on %s. Press any key to exit."  uri
+  printfn "%s: Started on %s. Press any key to exit."  (System.DateTimeOffset.Now.ToString("o")) uri
   ignore <| System.Console.ReadKey()
   0
