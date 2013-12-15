@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fowin.Apps", "Fowin\Fowin.Apps.fsproj", "{7C516EE7-4E72-4422-9FE4-945DAD03CF08}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fowin.Apps", "Fowin.Apps\Fowin.Apps.fsproj", "{7C516EE7-4E72-4422-9FE4-945DAD03CF08}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fowin.Main", "Fowin.Main\Fowin.Main.fsproj", "{B58644F5-9A30-410B-AD6A-EA45C8DB7934}"
 EndProject
