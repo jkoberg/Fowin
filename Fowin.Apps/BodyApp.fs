@@ -6,7 +6,6 @@ open System.Threading.Tasks
 open Fowin.Abbrevs
 open Fowin.Apps.BodyBuilder
 
-let BodyApp (next:AppFunc) =
-  fun (env:OwinEnv) ->
+let BodyApp (next:AppFunc) (env:OwinEnv) =
     writeBody env """<h1>hello world</h1>"""
     Task.Null
