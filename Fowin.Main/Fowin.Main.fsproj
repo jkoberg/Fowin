@@ -95,7 +95,7 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fowin\Fowin.Apps.fsproj">
+    <ProjectReference Include="..\Fowin.Apps\Fowin.Apps.fsproj">
       <Name>Fowin.Apps</Name>
       <Project>{7c516ee7-4e72-4422-9fe4-945dad03cf08}</Project>
       <Private>True</Private>
