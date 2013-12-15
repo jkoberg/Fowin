@@ -1,32 +1,13 @@
 ﻿module Fowin.Main
 
-open System
-open System.Collections.Generic
-open System.Threading.Tasks
-open Owin
-open Microsoft.Owin
-open Microsoft.Owin.Hosting
+let setup (app:Owin.IAppBuilder) = 
+  ignore <| app.Use( Fowin.Apps.BodyBuilder.BodyBuilderMiddleware )
+               .Use( Fowin.Apps.BodyApp.BodyApp )
 
-open Fowin.Types
-open Fowin.Apps
-
-let buildApp (app:IAppBuilder) =
-    ignore <| app.Use(BodyBuilder.BodyBuilderMiddleware)
-                 .Use(BodyApp.BodyApp)
-  
 [<EntryPoint>]
-let Main args = 
+let main args =
   let uri = "http://localhost:9678/"
-  try
-    printfn "Starting."
-    use a = WebApp.Start("http://localhost:9678/", buildApp)
-    printfn "Started."
-    ignore <| Console.ReadKey()
-    printfn "Stopping."
-    0
-  with
-  | :? System.Reflection.TargetInvocationException as ex ->
-      eprintfn "Problem starting. Maybe another process bound to that port??"
-      eprintfn "%s" (ex.ToString())
-      1
- 
+  use a = Microsoft.Owin.Hosting.WebApp.Start(uri, setup)
+  printfn "Started on %s. Press any key to exit."  uri
+  ignore <| System.Console.ReadKey()
+  0
