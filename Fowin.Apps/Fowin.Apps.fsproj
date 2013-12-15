@@ -51,8 +51,6 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="Types.fs" />
-    <Compile Include="DummyApp.fs" />
-    <Compile Include="FooMiddleware.fs" />
     <Compile Include="BodyBuilder.fs" />
     <Compile Include="BodyApp.fs" />
   </ItemGroup>
