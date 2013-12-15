@@ -11,8 +11,8 @@ open Fowin.Types
 open Fowin.Apps
 
 let buildApp (app:IAppBuilder) =
-    ignore <| app.Use(Foo.FooMiddleware)
-                 .Use(Dummy.DummyApp)
+    ignore <| app.Use(BodyBuilder.BodyBuilderMiddleware)
+                 .Use(BodyApp.BodyApp)
   
 [<EntryPoint>]
 let Main args = 
