@@ -7,9 +7,10 @@ let setup (app:Owin.IAppBuilder) =
 [<EntryPoint>]
 let main args =
   let uri =
-    match List.ofArray args with
-    | [] -> "http://localhost:9678/"
-    | uri::_ -> uri
+    match args with
+    | [|     |] -> "http://localhost:9678/"
+    | [| uri |] -> uri
+    | _         -> failwith "invalid command line params"
   use a = Microsoft.Owin.Hosting.WebApp.Start(uri, setup)
   printfn "%s: Started on %s. Press any key to exit."  (System.DateTimeOffset.Now.ToString("o")) uri
   ignore <| System.Console.ReadKey()
