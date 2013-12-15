@@ -3,7 +3,7 @@ open System
 open System.Collections.Generic
 open System.Threading.Tasks
 
-open Fowin.Types
+open Fowin.Abbrevs
 open Fowin.Apps.BodyBuilder
 
 let BodyApp (next:AppFunc) =

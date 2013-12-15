@@ -1,4 +1,4 @@
-﻿module Fowin.Types
+﻿module Fowin.Abbrevs
 
 open System
 open System.Collections.Generic

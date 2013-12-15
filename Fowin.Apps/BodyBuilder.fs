@@ -2,7 +2,7 @@
 
 open System
 open System.Threading.Tasks
-open Fowin.Types
+open Fowin.Abbrevs
 
 type Bodylist = System.Collections.Generic.List<Task<string>>
 
