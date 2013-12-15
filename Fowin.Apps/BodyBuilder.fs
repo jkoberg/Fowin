@@ -18,7 +18,7 @@ let finalize (env:OwinEnv) = async {
     let! elemtxt = await task
     do! await0 <| s.WriteAsync elemtxt
     }
-  
+
 let BodyBuilderMiddleware (next:AppFunc) =
   fun (env:OwinEnv) ->
     env.["bodyparts"] <- Bodylist()
