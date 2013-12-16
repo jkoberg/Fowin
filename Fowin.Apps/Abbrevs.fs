@@ -17,10 +17,7 @@ type MiddlewareFunc = AppFunc -> AppFunc
 let await = Async.AwaitTask
 
 /// Used to adapt a "C# Async" method of type Task to F# Async<unit>
-let await0 (t:Task) = async {
-  let! flag = Async.AwaitIAsyncResult t
-  ignore flag
-  }
+let await0 (t:Task) = async { ignore <| Async.AwaitIAsyncResult t }
 
 /// Turns an F# Async<'a> into a bare C# Task.
 /// Used to return the non-generic "Task" type
@@ -36,6 +33,11 @@ let invoke (next:Func<_,Task>) arg = await0 <| next.Invoke(arg)
 /// async Task needs to be completed
 let NullTask = Task.FromResult(())
 
+/// given a format spec, generate a timestamp
+let now(fmt:string) = DateTimeOffset.Now.ToString(fmt)
+
 /// print a string to STDERR, prefixed with a timestamp
-let log msg = eprintfn "%s: %s" (System.DateTimeOffset.Now.ToString("o")) msg
-let alog msg = await0 <| System.Console.Error.WriteAsync(sprintf "%s: %s\n" (System.DateTimeOffset.Now.ToString("o")) msg)
+let log msg = eprintfn "%s: %s" (now "o") msg
+
+/// print a string to STDERR, prefixed with a timestamp
+let alog msg = await0 <| Console.Error.WriteAsync(sprintf "%s: %s\n" (now "o") msg)
