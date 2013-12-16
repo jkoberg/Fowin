@@ -1,12 +1,12 @@
 ﻿module Fowin.Apps.BodyBuilder
 
 open System
+open System.Collections.Generic
 open System.Threading.Tasks
 open Fowin.Abbrevs
 
-/// The list of parts to be written to the body after
-/// executing the downstream app.
-type Bodylist = System.Collections.Generic.List<Task<string>>
+/// The list of parts to be written to the body after executing the downstream app.
+type Bodylist = List<Task<string>>
 
 /// use writeBody during processing to add a bare string the to-be-built body
 let writeBody (env:OwinEnv) s =

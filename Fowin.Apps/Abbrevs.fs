@@ -31,8 +31,11 @@ let start a : Task = upcast (Async.StartAsTask a)
 /// middleware as F# Async's
 let invoke (next:Func<_,Task>) arg = await0 <| next.Invoke(arg)
 
-
 /// Empty task that has "already finished" with Result=(),
 /// to be used where a Task value is expected but no
 /// async Task needs to be completed
 let NullTask = Task.FromResult(())
+
+/// print a string to STDERR, prefixed with a timestamp
+let log msg = eprintfn "%s: %s" (System.DateTimeOffset.Now.ToString("o")) msg
+let alog msg = await0 <| System.Console.Error.WriteAsync(sprintf "%s: %s\n" (System.DateTimeOffset.Now.ToString("o")) msg)
