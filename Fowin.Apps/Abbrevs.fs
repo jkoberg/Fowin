@@ -31,5 +31,8 @@ let start a : Task = upcast (Async.StartAsTask a)
 /// middleware as F# Async's
 let invoke (next:Func<_,Task>) arg = await0 <| next.Invoke(arg)
 
-type Task with
-  static member Null = Task.FromResult(())
+
+/// Empty task that has "already finished" with Result=(),
+/// to be used where a Task value is expected but no
+/// async Task needs to be completed
+let NullTask = Task.FromResult(())

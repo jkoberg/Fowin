@@ -9,4 +9,4 @@ open Fowin.Apps.BodyBuilder
 /// the `Task.Null` convenience extension from Fowin.Abbrevs
 let BodyApp (next:AppFunc) (env:OwinEnv) =
     writeBody env """<h1>hello world</h1>"""
-    Task.Null
+    NullTask
