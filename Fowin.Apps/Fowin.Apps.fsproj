@@ -53,6 +53,7 @@
     <Compile Include="Abbrevs.fs" />
     <Compile Include="BodyBuilder.fs" />
     <Compile Include="BodyApp.fs" />
+    <Compile Include="ErrorApp.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
